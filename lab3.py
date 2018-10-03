@@ -1,10 +1,14 @@
-from flask import Flask, redirect , url_for
+from flask import Flask, redirect , url_for, render_template
 app = Flask(__name__)
 
 
 @app.route("/private")
 def private():
     return redirect(url_for('login'))
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('conditional.html', name=name)
 @app.route('/login')
 def login():
     return "None shall pass"
